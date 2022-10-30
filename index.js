@@ -1,5 +1,4 @@
 const util = require('util');
-const moment = require('moment');
 const mysql = require('mysql2');
 const Base = require('db-migrate-base');
 const Promise = require('bluebird');
@@ -7,6 +6,8 @@ let log;
 let type;
 
 let internals = {};
+const formatCurrentDateTime = () =>
+  new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
 
 const MysqlDriver = Base.extend({
   init: function (connection) {
@@ -114,7 +115,11 @@ const MysqlDriver = Base.extend({
     }
 
     if (spec.primaryKey) {
-      if (!options || Object.keys(options).length === 0 || options.emitPrimaryKey) {
+      if (
+        !options ||
+        Object.keys(options).length === 0 ||
+        options.emitPrimaryKey
+      ) {
         constraint.push('PRIMARY KEY');
       }
     }
@@ -368,7 +373,7 @@ const MysqlDriver = Base.extend({
   },
 
   addMigrationRecord: function (name, callback) {
-    const formattedDate = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+    const formattedDate = formatCurrentDateTime();
     this.runSql(
       'INSERT INTO `' +
         internals.migrationTable +
@@ -379,7 +384,7 @@ const MysqlDriver = Base.extend({
   },
 
   addSeedRecord: function (name, callback) {
-    const formattedDate = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+    const formattedDate = formatCurrentDateTime();
     this.runSql(
       'INSERT INTO `' +
         internals.seedTable +
