@@ -1,5 +1,5 @@
 {
-  "name": "db-migrate-mysql",
+  "name": "@confuser/db-migrate-mysql",
   "version": "2.2.0",
   "description": "db-migrate mysql driver",
   "main": "index.js",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/db-migrate/mysql.git"
+    "url": "https://github.com/confuser/db-migrate-mysql.git"
   },
   "keywords": [
     "db-migrate",
@@ -39,9 +39,9 @@
   "author": "Tobias Gurtzick <magic@wizardtales.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/db-migrate/mysql/issues"
+    "url": "https://github.com/confuser/db-migrate-mysql/issues"
   },
-  "homepage": "https://github.com/db-migrate/mysql",
+  "homepage": "https://github.com/confuser/db-migrate-mysql",
   "dependencies": {
     "bluebird": "^3.7.2",
     "db-migrate-base": "^2.3.0",
